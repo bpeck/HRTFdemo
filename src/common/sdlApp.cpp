@@ -4,7 +4,8 @@
 #include "../event/EventDispatch.h"
 #include <string>
 
-sdlApp::sdlApp(std::string name, int w, int h, int GLMajorV, int GLMinorV, int zBuffBitDepth,
+sdlApp::sdlApp(std::string name, int w, int h,
+    GLuint GLMajorV, GLuint GLMinorV, GLuint GLProfile, GLuint zBuffBitDepth,
     Uint32 EventRate, Uint32 RenderRate) :
     appName(name),
     width(w),
@@ -15,16 +16,18 @@ sdlApp::sdlApp(std::string name, int w, int h, int GLMajorV, int GLMinorV, int z
     if (SDL_Init(SDL_INIT_VIDEO) < 0) /* Initialize SDL's Video subsystem */
         SDLdie("Unable to initialize SDL"); /* Or die on error */
     
-    /* Request opengl 4.0 context.
+    /* Request opengl context.
      * SDL doesn't have the ability to choose which profile at this time of writing,
      * but it should default to the core profile */
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, GLMajorV);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, GLMinorV);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, GLProfile);
  
     /* Turn on double buffering with a 24bit Z buffer.
      * You may need to change this to 16 or 32 for your system */
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, zBuffBitDepth);
+    //SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, zBuffBitDepth);
+    SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
  
     /* Create our window centered at 512x512 resolution */
     windowHandle = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED,

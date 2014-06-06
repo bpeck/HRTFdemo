@@ -16,6 +16,7 @@ class app : public sdlApp, EventListener {
         void OnEvent(SDL_Event& event, Uint32 dT);
     
     private:
+        void _moveSoundSource(int mousex, int mousey);
         bool done;
 };
 

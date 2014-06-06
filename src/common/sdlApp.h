@@ -8,8 +8,10 @@
 
 class sdlApp {
     public:
-        sdlApp(std::string name="SDL App", int w=512, int h=512, int GLMajorV=4, int GLMinorV=0,
-               int zBuffBitDepth=24, Uint32 EventRate=17, Uint32 RenderRate=17);
+        sdlApp(std::string name="SDL App",
+               int w=512, int h=512,
+               GLuint GLMajorV=3, GLuint GLMinorV=3, GLuint GLProfile=SDL_GL_CONTEXT_PROFILE_CORE,
+               GLuint zBuffBitDepth=24, Uint32 EventRate=17, Uint32 RenderRate=17);
         
         int Main();
         

@@ -42,6 +42,7 @@ void initOpenAL( ALCdevice* &device, ALCcontext* &context )
         0,          // Null terminator
     };
     context = alcCreateContext(device, params);
+    alcMakeContextCurrent(context);
 }
 
 ALuint loadWAV(const char* filename)
@@ -55,7 +56,7 @@ ALuint loadWAV(const char* filename)
         printf("Could not open test.wav: %s\n", SDL_GetError());
         return 0;
     }
-    ALuint buffer;
+    ALuint buffer = -1;
     alGenBuffers((ALuint)1, &buffer);
     
     bool stereo = (wav_spec.channels > 1);
@@ -74,9 +75,9 @@ ALuint loadWAV(const char* filename)
             internalFormat = AL_FORMAT_MONO8;
     }
     
-    alBufferData(buffer, internalFormat, wav_buffer, wav_length, wav_spec.samples);
+    alBufferData(buffer, internalFormat, wav_buffer, wav_length, wav_spec.freq);
     
-    SDL_FreeWAV(wav_buffer);
+    //SDL_FreeWAV(wav_buffer);
     
     return buffer;
 }
