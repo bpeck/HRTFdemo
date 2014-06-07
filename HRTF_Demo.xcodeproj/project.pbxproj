@@ -80,6 +80,9 @@
 		E0F9397C1941992300BCDF26 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E0F9397E1941992300BCDF26 /* App.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = App.1; sourceTree = "<group>"; };
 		E0F9398319419B3100BCDF26 /* openalIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openalIncludes.h; sourceTree = "<group>"; };
+		E0F939841942F21100BCDF26 /* APP */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = APP; sourceTree = "<group>"; };
+		E0F939891942F22800BCDF26 /* test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = test.wav; sourceTree = "<group>"; };
+		E0F9398A1942F22800BCDF26 /* test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = test.wav; path = data/test.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,7 @@
 		E0AC42D6193C07B800258506 = {
 			isa = PBXGroup;
 			children = (
+				E0F9398A1942F22800BCDF26 /* test.wav */,
 				E0AC42DD193C07D400258506 /* OpenAL-MOB-mac.xcodeproj */,
 				E0AC43FF193C10AB00258506 /* OpenGL.framework */,
 				E0AC42F2193C0B8500258506 /* SDL2.framework */,
@@ -106,6 +110,8 @@
 				E0F9397B1941992300BCDF26 /* App */,
 				E0AC42E9193C09AA00258506 /* Products */,
 				E094795E193C2A2900CACEF9 /* libOpenAL-MOB-mac-dynamic.dylib */,
+				E0F939841942F21100BCDF26 /* APP */,
+				E0F939851942F22800BCDF26 /* data */,
 			);
 			sourceTree = "<group>";
 		};
@@ -213,6 +219,14 @@
 				E0F9397E1941992300BCDF26 /* App.1 */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		E0F939851942F22800BCDF26 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				E0F939891942F22800BCDF26 /* test.wav */,
+			);
+			path = data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
