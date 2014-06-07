@@ -35,8 +35,10 @@ void app::init() {
     alSourcef(source, AL_GAIN, 1);
     alSource3f(source, AL_POSITION, 0, 0, 0);
     alSource3f(source, AL_VELOCITY, 0, 0, 0);
-    alSourcei(source, AL_REFERENCE_DISTANCE, 0.1);
-    alSourcei(source, AL_MAX_DISTANCE, ROOM_WIDTH);
+    // distance below which sound is no attenuated up any further
+    alSourcei(source, AL_REFERENCE_DISTANCE, 0.05);
+    // distance above which sound is not attenuated down any further
+    alSourcei(source, AL_MAX_DISTANCE, ROOM_WIDTH * 0.95);
     alSourcei(source, AL_LOOPING, AL_TRUE);
     
     buffer = loadWAV("data/test.wav");
@@ -106,8 +108,8 @@ void app::OnEvent(SDL_Event& event, Uint32 dT) {
 void app::_moveSoundSource(int mousex, int mousey) {
     int winW, winH;
     SDL_GetWindowSize(this->windowHandle, &winW, &winH);
-    float wx = -0.5f + ((float)mousex / (float)winW) * ROOM_WIDTH;
-    float wy = -0.5f + ((float)mousey / (float)winH) * ROOM_HEIGHT;
+    float wx = (-0.5f + ((float)mousex / (float)winW)) * ROOM_WIDTH;
+    float wz = (-0.5f + ((float)mousey / (float)winH)) * ROOM_HEIGHT;
     
-    alSource3f(source, AL_POSITION, wx, wy, 0);
+    alSource3f(source, AL_POSITION, wx, wz, 0);
 }
