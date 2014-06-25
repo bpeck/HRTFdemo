@@ -2,6 +2,8 @@ HRTF Demo
 ========
 A demo illustrating HRTF capabilities on OSX using OpenAL-MOB fork by Jawbone.
 This project provides some boilder plate SDL and OpenAL code to listen to a sound be modulated around a virtual room. Move the mouse within the window to move the sound in XY space.
+###OSX build scripts only for now
+Right now I only provide an Xcode project because that is where I wrote this demo. However, the OpenAL-MOB fork is cross platform, and my code uses nothing except SDL, which is also cross platform. I don't have the time at the moment to write and test cmake files for windows and linux, but I am sure it is possible, and if you're interested in contributing please let me know.
 #Build instructions
 
 Things are not exactly plug and play, but you're a l33t h4xor and can figure it out:
