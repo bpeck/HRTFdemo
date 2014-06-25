@@ -18,7 +18,7 @@ const float ROOM_WIDTH = 10.f;
 const float ROOM_HEIGHT = ROOM_WIDTH;
 
 app::app() :
-    sdlApp("HRTF Test - Move mouse around"),
+    sdlApp("HRTF Test - Put on Headphones & Move mouse around"),
     EventListener(),
     done(false)
 {
@@ -27,7 +27,7 @@ app::app() :
     printf("Working Directory: %s\n", buff);
 }
 
-void app::init() {
+void app::Init() {
     initOpenAL(device, context);
     
     alGenSources((ALuint)1, &source);
@@ -50,7 +50,7 @@ void app::init() {
     this->eventDispatch.AddListener(*this);
 }
 
-void app::teardown() {
+void app::Teardown() {
     // cleanup OpenAL
     alDeleteSources(1, &source);
     alDeleteBuffers(1, &buffer);
@@ -60,13 +60,13 @@ void app::teardown() {
     alcCloseDevice(device);
 }
 
-void app::render(float dT) {
+void app::Render(float dT) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     SDL_GL_SwapWindow(this->windowHandle);
 }
 
-void app::mainloop() {
+void app::Mainloop() {
     Uint32 lastRenderUpdate = SDL_GetTicks();
     Uint32 lastEventPoll = SDL_GetTicks();
     
@@ -80,7 +80,7 @@ void app::mainloop() {
         // is it time to render?
         Uint32 renderDt = SDL_GetTicks() - lastRenderUpdate;
         if (renderDt > this->renderRate) {
-            render(renderDt);
+            this->Render(renderDt);
             lastRenderUpdate = SDL_GetTicks();
         }
     }
@@ -98,7 +98,7 @@ void app::OnEvent(SDL_Event& event, Uint32 dT) {
             
             break;
         case SDL_MOUSEMOTION:
-            _moveSoundSource(event.motion.x, event.motion.y);
+            this->_moveSoundSource(event.motion.x, event.motion.y);
             break;
         case SDL_QUIT:
             exit(0);

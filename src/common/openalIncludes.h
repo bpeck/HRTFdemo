@@ -11,8 +11,9 @@
 
 #include <SDL2/SDL.h>
 
-// Without this, it doesn't prototype the functions that OpenAL-Mob adds to the reference implementation.
+// prototype the functions that OpenAL-Mob adds to the reference implementation.
 #define AL_ALEXT_PROTOTYPES
+
 #include <AL/al.h>
 #include <AL/alext.h>
 #include <alConfigMob.h>
@@ -77,7 +78,7 @@ ALuint loadWAV(const char* filename)
     
     alBufferData(buffer, internalFormat, wav_buffer, wav_length, wav_spec.freq);
     
-    //SDL_FreeWAV(wav_buffer);
+    SDL_FreeWAV(wav_buffer);
     
     return buffer;
 }

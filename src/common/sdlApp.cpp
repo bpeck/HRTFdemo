@@ -16,9 +16,7 @@ sdlApp::sdlApp(std::string name, int w, int h,
     if (SDL_Init(SDL_INIT_VIDEO) < 0) /* Initialize SDL's Video subsystem */
         SDLdie("Unable to initialize SDL"); /* Or die on error */
     
-    /* Request opengl context.
-     * SDL doesn't have the ability to choose which profile at this time of writing,
-     * but it should default to the core profile */
+    /* Request opengl context. */
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, GLMajorV);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, GLMinorV);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, GLProfile);
@@ -59,11 +57,11 @@ sdlApp::sdlApp(std::string name, int w, int h,
 }
 
 int sdlApp::Main() {
-    this->init();
+    this->Init();
  
-    this->mainloop();
+    this->Mainloop();
     
-    this->teardown();
+    this->Teardown();
     
     /* Delete our opengl context, destroy our window, and shutdown SDL */
     SDL_GL_DeleteContext(glContext);

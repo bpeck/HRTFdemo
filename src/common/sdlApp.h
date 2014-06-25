@@ -15,9 +15,9 @@ class sdlApp {
         
         int Main();
         
-        virtual void init() = 0;
-        virtual void mainloop() = 0;
-        virtual void teardown() = 0;
+        virtual void Init() = 0;
+        virtual void Mainloop() = 0;
+        virtual void Teardown() = 0;
     
     protected:
         std::string appName;

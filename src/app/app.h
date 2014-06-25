@@ -8,10 +8,10 @@ class app : public sdlApp, EventListener {
     public:
         app();
         
-        void init();
-        void render(float dT);
-        void mainloop();
-        void teardown();
+        void Init();
+        void Render(float dT);
+        void Mainloop();
+        void Teardown();
     
         void OnEvent(SDL_Event& event, Uint32 dT);
     
